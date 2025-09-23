@@ -1,0 +1,2 @@
+[registries.airdrop-rs]
+index = "sparse+https://codeberg.org/api/packages/airdrop-rs/cargo/"

@@ -8,6 +8,21 @@
 
 This project contains experimental changes by [DorotaC](https://dorotac.eu) on top of [gd32vf103xx-hal](https://docs.rs/crate/gd32vf103xx-hal) developed and maintained by the [RISC-V team][team].
 
+## Importing
+
+Make sure Cargo knows about the *airdrop.rs* crates registry. If needed, create a .cargo/config.toml file in your project's directory or its parent. The contents should include:
+
+```
+[registries.airdrop-rs]
+index = "sparse+https://codeberg.org/api/packages/airdrop-rs/cargo/"
+```
+
+Then, include the crate in your Cargo.toml:
+
+```
+gd32vf103xx-hal-nyaa = { version = "0.6", registry = "airdrop.rs" }
+```
+
 ## Documentation
 
 Use `cargo doc`.
