@@ -2,18 +2,19 @@
 [![crates.io](https://img.shields.io/crates/v/gd32vf103xx-hal.svg)](https://crates.io/crates/gd32vf103xx-hal)
 ![Build Status](https://github.com/riscv-rust/gd32vf103xx-hal/workflows/CI/badge.svg)
 
-# `gd32vf103xx-hal`
+# `gd32vf103xx-hal-nyaa`
 
 > HAL for gd32vf103 variants 
 
-This project is developed and maintained by the [RISC-V team][team].
+This project contains experimental changes by [DorotaC](https://dorotac.eu) on top of [gd32vf103xx-hal](https://docs.rs/crate/gd32vf103xx-hal) developed and maintained by the [RISC-V team][team].
 
-Alternative to [gd32vf103-hal](https://github.com/luojia65/gd32vf103-hal)
+## Documentation
 
-## [Documentation](https://docs.rs/crate/gd32vf103xx-hal)
+Use `cargo doc`.
 
 ## License
 
+Copyright 2025 DorotaC
 Copyright 2019 [RISC-V team][team]
 
 Permission to use, copy, modify, and/or distribute this software for any purpose
@@ -31,7 +32,7 @@ THIS SOFTWARE.
 ## Code of Conduct
 
 Contribution to this crate is organized under the terms of the [Rust Code of
-Conduct][CoC], the maintainer of this crate, the [RISC-V team][team], promises
+Conduct][CoC]. The maintainer of this crate, promises
 to intervene to uphold that code of conduct.
 
 [CoC]: CODE_OF_CONDUCT.md

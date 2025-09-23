@@ -13,6 +13,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
+## [v0.6.0] - 2025-09-23
+
+- Haker-**nyaa** rebranding to gd32vf103xx-hal-nyaa
+- No functional changes
+
 ## [v0.5.0] - 2021-09-04
 
 ### Added
@@ -80,7 +85,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Make GPIO pin activate() public
 
-[Unreleased]: https://github.com/riscv-rust/gd32vf103xx-hal/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/dcz-self/gd32vf103xx-hal-nyaa/compare/v0.6.0...master
+[v0.6.0]: https://github.com/dcz-self/gd32vf103xx-hal-nyaa/compare/v0.5.0...v0.6.0
 [v0.5.0]: https://github.com/riscv-rust/gd32vf103xx-hal/compare/v0.4.0...v0.5.0
 [v0.4.0]: https://github.com/riscv-rust/gd32vf103xx-hal/compare/v0.3.0...v0.4.0
 [v0.3.0]: https://github.com/rust-embedded/riscv/compare/v0.2.3...v0.3.0
