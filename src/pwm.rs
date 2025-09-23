@@ -128,10 +128,11 @@ impl From<PartialRemap2> for u8 {
 /// The tuple provided should contains only the pins you will use.
 ///
 /// ```no_run
-/// use gd32vf103xx_hal as hal;
+/// use gd32vf103xx_hal_nyaa as hal;
 /// use hal::pac::{Peripherals, TIMER0};
 /// use hal::gpio::GpioExt;
 /// use hal::rcu::RcuExt;
+/// use hal::time::U32Ext;
 /// use hal::afio::AfioExt;
 /// use hal::pwm::{PwmTimer, Channel, NoRemap};
 /// use embedded_hal::Pwm;

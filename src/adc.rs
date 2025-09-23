@@ -557,7 +557,11 @@ pub trait ChannelTimeSequence {
 /// Set channel sequence and sample times for custom pins
 ///
 /// Example:
-/// ```rust, ignore
+/// ```rust
+/// use gd32vf103xx_hal_nyaa::adc::{self, Adc, ChannelTimeSequence, SetChannels};
+/// use gd32vf103xx_hal_nyaa::gpio::Analog;
+/// use gd32vf103xx_hal_nyaa::gpio::gpioa::{PA0, PA2};
+/// use gd32vf103_pac::ADC0;
 /// pub struct AdcPins(PA0<Analog>, PA2<Analog>);
 /// impl SetChannels<AdcPins> for Adc<ADC0> {
 ///     fn set_samples(&mut self) {
