@@ -19,6 +19,7 @@ pub mod exmc;
 pub mod exti;
 pub mod gpio;
 pub mod i2c;
+pub mod pmu;
 pub mod prelude;
 pub mod pwm;
 pub mod rcu;
