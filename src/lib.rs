@@ -11,6 +11,7 @@ use embedded_hal as hal;
 
 pub mod adc;
 pub mod afio;
+mod atools;
 pub mod backup_domain;
 pub mod delay;
 pub mod dma;
