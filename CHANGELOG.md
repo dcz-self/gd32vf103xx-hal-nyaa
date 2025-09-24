@@ -13,6 +13,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
+## [v0.7.1] - 2025-09-24
+
+### Removed
+
+- Precompiled binary
+
 ## [v0.7.0] - 2025-09-24
 
 ### Added
@@ -97,8 +103,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Make GPIO pin activate() public
 
-[Unreleased]: https://github.com/dcz-self/gd32vf103xx-hal-nyaa/compare/nyaa-v0.7.0...master
-[v0.6.0]: https://github.com/dcz-self/gd32vf103xx-hal-nyaa/compare/nyaa-v0.6.0...nyaa-v0.7.0
+[Unreleased]: https://github.com/dcz-self/gd32vf103xx-hal-nyaa/compare/nyaa-v0.7.1...master
+[v0.7.1]: https://github.com/dcz-self/gd32vf103xx-hal-nyaa/compare/nyaa-v0.7.0...nyaa-v0.7.1
+[v0.7.0]: https://github.com/dcz-self/gd32vf103xx-hal-nyaa/compare/nyaa-v0.6.0...nyaa-v0.7.0
 [v0.6.0]: https://github.com/dcz-self/gd32vf103xx-hal-nyaa/compare/v0.5.0...nyaa-v0.6.0
 [v0.5.0]: https://github.com/riscv-rust/gd32vf103xx-hal/compare/v0.4.0...v0.5.0
 [v0.4.0]: https://github.com/riscv-rust/gd32vf103xx-hal/compare/v0.3.0...v0.4.0
