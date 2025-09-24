@@ -10,6 +10,8 @@
 */
 
 use crate::pac::{rcu, BKP, PMU};
+
+use crate::atools::poll_until;
 use crate::rcu::{Rcu, Enable};
 
 /// Extension trait that sets up the `BKP` peripheral
@@ -59,11 +61,17 @@ impl Lxtal {
     }
     /// Enable the clock and block until stabilized.
     pub fn enable_block(rcu: &Rcu) -> Self {
-        //let rcu = unsafe { &*RCU::ptr() };
         let rcu = &rcu.regs;
         Self::just_enable(rcu);
         // Wait for stable LXTAL
         while !Self::is_stable(rcu) {}
+        Self(())
+    }
+    /// Enable the clock and poll until stabilized.
+    pub async fn enable_poll(rcu: &Rcu) -> Self {
+        let rcu = &rcu.regs;
+        Self::just_enable(rcu);
+        poll_until(|| Self::is_stable(rcu)).await;
         Self(())
     }
 }
