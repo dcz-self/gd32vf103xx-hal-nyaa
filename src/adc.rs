@@ -3,6 +3,7 @@
 use core::marker::PhantomData;
 use core::sync::atomic::{self, Ordering};
 
+use crate::atools::poll_until;
 use crate::dma::{dma0::C0, CircBuffer, CircReadDma, Receive, RxDma, Transfer, TransferPayload, W};
 use crate::gpio::{gpioa, gpiob, gpioc, Analog};
 use crate::pac::{ADC0, ADC1};
@@ -376,7 +377,7 @@ macro_rules! adc_hal {
             /// The check for `ctl1.swrcst.bit_is_set` *should* fix it, but
             /// does not. Therefore, ensure you do not do any no-op modifications
             /// to `ctl1` just before calling this function
-            fn convert(&mut self, chan: u8) -> u16 {
+            fn convert_start(&mut self, chan: u8) {
                 // Dummy read in case something accidentally triggered
                 // a conversion by writing to CTL1 without changing any
                 // of the bits
@@ -391,6 +392,9 @@ macro_rules! adc_hal {
                     .swrcst().set_bit()
                     .dal().bit(self.align.into())
                 );
+            }
+
+            fn convert_wait(&self) -> u16 {
                 while self.rb.ctl1.read().swrcst().bit_is_set() {}
                 // ADC wait for conversion results
                 while self.rb.stat.read().eoc().bit_is_clear() {}
@@ -399,6 +403,18 @@ macro_rules! adc_hal {
                 res
             }
 
+            /// Reads out a value. Keeps polling for readiness, yielding immediately each time.
+            pub async fn read_poll<PIN: Channel<$ADC, ID = u8>>(&mut self, _pin: &mut PIN) -> u16 {
+                self.convert_(PIN::channel()).await
+            }
+
+            async fn convert_(&mut self, chan: u8) -> u16 {
+                self.convert_start(chan);
+                poll_until(|| self.rb.ctl1.read().swrcst().bit_is_set()).await;
+                poll_until(|| self.rb.stat.read().eoc().bit_is_clear()).await;
+
+                self.rb.rdata.read().rdata().bits()
+            }
             /// Powers down the ADC, disables the ADC clock and releases the ADC Peripheral
             pub fn release(mut self, rcu: &mut Rcu) -> $ADC {
                 self.power_down();
@@ -433,8 +449,10 @@ macro_rules! adc_hal {
         {
             type Error = ();
 
+            /// Reads out a value. Blocks in a busy loop.
             fn read(&mut self, _pin: &mut PIN) -> nb::Result<WORD, Self::Error> {
-                let res = self.convert(PIN::channel());
+                self.convert_start(PIN::channel());
+                let res = self.convert_wait();
                 Ok(res.into())
             }
         }
@@ -458,7 +476,8 @@ impl Adc<ADC0> {
             false
         };
 
-        let val = self.convert(chan);
+        self.convert_start(chan);
+        let val = self.convert_wait();
 
         if tsv_off {
             self.rb.ctl1.modify(|_, w| w.tsvren().clear_bit());
