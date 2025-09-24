@@ -13,6 +13,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
+## [v0.7.2] - 2025-09-24
+
+### Added
+
+- Async ADC read
+- Async LXTAL initialization
+
 ## [v0.7.1] - 2025-09-24
 
 ### Removed
@@ -103,7 +110,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Make GPIO pin activate() public
 
-[Unreleased]: https://github.com/dcz-self/gd32vf103xx-hal-nyaa/compare/nyaa-v0.7.1...master
+[Unreleased]: https://github.com/dcz-self/gd32vf103xx-hal-nyaa/compare/nyaa-v0.7.2...master
+[v0.7.2]: https://github.com/dcz-self/gd32vf103xx-hal-nyaa/compare/nyaa-v0.7.1...nyaa-v0.7.2
 [v0.7.1]: https://github.com/dcz-self/gd32vf103xx-hal-nyaa/compare/nyaa-v0.7.0...nyaa-v0.7.1
 [v0.7.0]: https://github.com/dcz-self/gd32vf103xx-hal-nyaa/compare/nyaa-v0.6.0...nyaa-v0.7.0
 [v0.6.0]: https://github.com/dcz-self/gd32vf103xx-hal-nyaa/compare/v0.5.0...nyaa-v0.6.0
